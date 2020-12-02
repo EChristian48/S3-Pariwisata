@@ -1,10 +1,10 @@
 import Nav from '~root/components/Nav'
 
-export default function TempatWisata() {
+export default function Credits() {
   return (
     <div>
       <Nav />
-      <div>Ini list tempat wisata</div>
+      <div>Ini credits</div>
     </div>
   )
 }
