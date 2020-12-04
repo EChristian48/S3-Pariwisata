@@ -65,59 +65,7 @@ export default function Home({ featuredPlaces }: HomeProps) {
       </Box>
 
       <Box>
-        {/* <Button
-          onClick={() =>
-            setSelectedImage(cur => (featuredPlaces[cur + 1] ? cur + 1 : 0))
-          }
-        >
-          asdas
-        </Button> */}
         <Container maxWidth={['100%', , '80%']} marginTop={8}>
-          {/* <AnimatePresence exitBeforeEnter >
-            <HStack position='relative' justify='center'>
-              <motion.div
-                key={featuredPlaces[selectedImage].metadata.name}
-                initial={{ x: 500, scale: 0 }}
-                animate={{
-                  x: 0,
-                  scale: 1,
-                  opacity: 1,
-                  zIndex: 1,
-                  position: 'absolute',
-                  top: 0,
-                }}
-                exit={{ x: -500, scale: 0, zIndex: 0 }}
-                transition={{
-                  x: { type: 'spring', stiffness: 200, damping: 30 },
-                }}
-              >
-                <Image
-                  src={featuredPlaces[selectedImage].metadata.photoUrl}
-                  height='500px'
-                />
-              </motion.div>
-            </HStack>
-          </AnimatePresence> */}
-
-          {/* <Carousel>
-            {featuredPlaces.map(
-              ({ metadata: { name, photoUrl, shortDesc } }) => (
-                <Carousel.Item key={name}>
-                  <Image
-                    src={photoUrl}
-                    objectFit='none'
-                    width='full'
-                    maxHeight='100%'
-                  />
-
-                  <Carousel.Caption>
-                    <Heading>{name}</Heading>
-                    <Text>{shortDesc}</Text>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              )
-            )}
-          </Carousel> */}
           <Heading textAlign='center' fontFamily='Caveat'>
             Tempat Pilihan buat kamu:
           </Heading>
