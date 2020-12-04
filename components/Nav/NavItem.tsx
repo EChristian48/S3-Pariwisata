@@ -12,6 +12,7 @@ export default function NavItem({ href, label }: NavItemProps) {
 
   return (
     <motion.div
+      initial={pathname === href && { y: 20 }}
       animate={{
         display: 'flex',
         flexDirection: 'column-reverse',
