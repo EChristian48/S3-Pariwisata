@@ -1,26 +1,20 @@
 import {
   Box,
-  Button,
   Center,
   Container,
-  Flex,
   Heading,
-  HStack,
   Image,
-  Img,
   SimpleGrid,
   Text,
   VStack,
 } from '@chakra-ui/react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
-import Head from 'next/head'
 import path from 'path'
 import { useState } from 'react'
-import { Carousel } from 'react-bootstrap'
 import { Remarkable } from 'remarkable'
 import Nav from '~root/components/Nav'
 import { PostData } from '~root/lib/types'
