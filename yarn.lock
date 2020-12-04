@@ -3826,6 +3826,11 @@ parse-json@^5.0.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
+particle.js@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/particle.js/-/particle.js-1.0.7.tgz#d8e2d39dfdb9258feffcbb67b86aeebb8fc317d7"
+  integrity sha1-2OLTnf25JY/v/LtnuGruu4/DF9c=
+
 pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
