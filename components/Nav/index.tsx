@@ -1,15 +1,18 @@
-import { HStack, Portal } from '@chakra-ui/react'
-import { menus } from '~root/lib/menus'
-import NavItem from './NavItem'
+import { Flex } from '@chakra-ui/react'
+import { useToggler } from 'molohooks'
+import { HamburgerSpring } from 'react-animated-burgers'
+import { WRAPPER_ID } from '~root/lib/constants'
+
+const MENU_WRAPPER_ID = 'menu-wrapper-id'
 
 export default function Nav() {
+  const [isDrawerOpen, openDrawer, closeDrawer, toggleDrawer] = useToggler()
+
   return (
-    <Portal>
-      <HStack width='full' justify='center' position='fixed' top={0}>
-        {menus.map(({ href, label }) => (
-          <NavItem key={label} href={href} label={label} />
-        ))}
-      </HStack>
-    </Portal>
+    <>
+      <Flex width='full' id={WRAPPER_ID}>
+        <HamburgerSpring isActive={isDrawerOpen} toggleButton={toggleDrawer} />
+      </Flex>
+    </>
   )
 }

@@ -17,6 +17,7 @@ import path from 'path'
 import { useState } from 'react'
 import { Remarkable } from 'remarkable'
 import Nav from '~root/components/Nav'
+import { WRAPPER_ID } from '~root/lib/constants'
 import { PostData } from '~root/lib/types'
 
 type HomeProps = {
