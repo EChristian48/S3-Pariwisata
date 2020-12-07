@@ -4,6 +4,7 @@ import { AppProps } from 'next/app'
 import { defaultSeoConfig } from '~root/next-seo.config'
 import Head from 'next/head'
 import { customTheme } from '~root/chakra.theme'
+import { WRAPPER_ID } from '~root/lib/constants'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -27,9 +28,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <DefaultSeo {...defaultSeoConfig} />
 
-      <ChakraProvider theme={customTheme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <div id={WRAPPER_ID}>
+        <ChakraProvider theme={customTheme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </div>
     </>
   )
 }
