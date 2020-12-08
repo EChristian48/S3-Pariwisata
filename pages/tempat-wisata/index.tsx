@@ -1,12 +1,11 @@
-import { Center, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
-import fs from 'fs'
-import matter from 'gray-matter'
+import { Center, Container, Heading, SimpleGrid } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import path from 'path'
-import { Remarkable } from 'remarkable'
 import FeaturedPlace from '~root/components/FeaturedPlace'
 import Layout from '~root/components/Layout'
+import LinkWrapper from '~root/components/LinkWrapper'
+import { getPostsDatas } from '~root/lib/tempat-wisata'
 import { PostData } from '~root/lib/types'
 
 type TempatWisataProps = {
@@ -27,9 +26,11 @@ export default function TempatWisata({ places }: TempatWisataProps) {
 
         <Container maxWidth='100%' marginTop={16}>
           <SimpleGrid columns={[2, , 4]} color='white' spacing='4'>
-            {places.map(({ metadata: { name, photoUrl } }) => (
+            {places.map(({ metadata: { name, photoUrl }, id }) => (
               <Center height='100%' width='100%' key={name}>
-                <FeaturedPlace {...{ name, photoUrl }} />
+                <LinkWrapper nextProps={{ href: `/tempat-wisata/${id}` }}>
+                  <FeaturedPlace {...{ name, photoUrl }} />
+                </LinkWrapper>
               </Center>
             ))}
           </SimpleGrid>
@@ -42,18 +43,7 @@ export default function TempatWisata({ places }: TempatWisataProps) {
 const placesDir = path.join(process.cwd(), 'places')
 
 export const getStaticProps: GetStaticProps<TempatWisataProps> = async () => {
-  const md = new Remarkable()
-  const fileNames = fs.readdirSync(placesDir)
-  const postDatas: PostData[] = fileNames.map(fileName => {
-    const filePath = path.join(placesDir, fileName)
-    const fileContent = fs.readFileSync(filePath)
-    const matterData = matter(fileContent)
-    const parsed = md.render(matterData.content)
-    return {
-      content: parsed,
-      metadata: matterData.data,
-    }
-  })
+  const postDatas = getPostsDatas()
   return {
     props: {
       places: postDatas,

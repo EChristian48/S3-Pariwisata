@@ -5,6 +5,7 @@ import Layout from '~root/components/Layout'
 import { getSinglePlaceData, placesFileNames } from '~root/lib/tempat-wisata'
 import { PostData } from '~root/lib/types'
 import parser from 'html-react-parser'
+import { cleanFileName } from '~root/lib/tempat-wisata'
 
 type DetailTempatProps = {
   postData: PostData
@@ -34,9 +35,7 @@ export default function DetailTempat({
 }
 
 export const getStaticPaths: GetStaticPaths<DetailTempatParams> = async () => {
-  const cleanedRoutes = placesFileNames.map(fileName =>
-    fileName.replace(/.md$/, '')
-  )
+  const cleanedRoutes = placesFileNames.map(cleanFileName)
 
   return {
     paths: cleanedRoutes.map(route => ({ params: { nama: route } })),

@@ -7,6 +7,8 @@ import { PostData } from '~root/lib/types'
 export const placesDir = path.join(process.cwd(), 'places')
 export const placesFileNames = fs.readdirSync(placesDir)
 
+export const cleanFileName = (fileName: string) => fileName.replace(/.md$/, '')
+
 export function getPostsDatas(fileNames: string[] = placesFileNames) {
   const md = new Remarkable()
 
@@ -18,6 +20,7 @@ export function getPostsDatas(fileNames: string[] = placesFileNames) {
     return {
       content: parsed,
       metadata: matterData.data,
+      id: cleanFileName(fileName),
     }
   })
 
@@ -32,5 +35,9 @@ export function getSinglePlaceData(fileName: string): PostData {
   const matterData = matter(fileContent)
   const parsed = md.render(matterData.content)
 
-  return { content: parsed, metadata: matterData.data }
+  return {
+    content: parsed,
+    metadata: matterData.data,
+    id: cleanFileName(fileName),
+  }
 }

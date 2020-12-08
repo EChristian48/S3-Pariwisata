@@ -8,4 +8,5 @@ export type PostMetaData = {
 export type PostData = {
   metadata: PostMetaData
   content: string
+  id: string
 }
