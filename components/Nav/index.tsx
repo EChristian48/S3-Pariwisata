@@ -33,7 +33,14 @@ export default function Nav() {
             height={widths}
             marginLeft={4}
             marginRight='auto'
-            fallback={<SkeletonCircle width={widths} height={widths} />}
+            fallback={
+              <SkeletonCircle
+                width={widths}
+                height={widths}
+                marginLeft={4}
+                marginRight='auto'
+              />
+            }
           />
 
           {isMediumScreen ? (

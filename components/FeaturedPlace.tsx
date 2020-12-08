@@ -5,9 +5,16 @@ import { useEffect } from 'react'
 export type FeaturedPlaceProps = {
   photoUrl: string
   name: string
+  width?: string
+  height?: string
 }
 
-export default function FeaturedPlace({ name, photoUrl }: FeaturedPlaceProps) {
+export default function FeaturedPlace({
+  name,
+  photoUrl,
+  height = '300px',
+  width = '300px',
+}: FeaturedPlaceProps) {
   const imageControl = useAnimation()
   const textControl = useAnimation()
 
@@ -15,8 +22,8 @@ export default function FeaturedPlace({ name, photoUrl }: FeaturedPlaceProps) {
     imageControl.start({
       objectFit: 'cover',
       filter: 'brightness(50%)',
-      height: '300px',
-      width: '300px',
+      height,
+      width,
       zIndex: -1,
     })
   }, [])

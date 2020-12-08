@@ -1,13 +1,10 @@
-import { Box, Center, Container, Heading, Stack, Text } from '@chakra-ui/react'
-import fs from 'fs'
-import matter from 'gray-matter'
+import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
-import path from 'path'
-import { Remarkable } from 'remarkable'
 import FeaturedPlace from '~root/components/FeaturedPlace'
 import Layout from '~root/components/Layout'
 import { useMediumScreen } from '~root/lib/hooks'
+import { getPostsDatas } from '~root/lib/tempat-wisata'
 import { PostData } from '~root/lib/types'
 
 type HomeProps = {
@@ -64,28 +61,12 @@ export default function Home({ featuredPlaces }: HomeProps) {
               width='full'
               align='center'
             >
-              {featuredPlaces.slice(0, 3).map(
-                ({ metadata: { name, photoUrl, shortDesc } }) => (
+              {featuredPlaces
+                .slice(0, 3)
+                .map(({ metadata: { name, photoUrl, shortDesc } }) => (
                   <FeaturedPlace {...{ photoUrl, name }} key={name} />
-                )
-              )}
+                ))}
             </Stack>
-          </Container>
-
-          <Container
-            maxWidth='100%'
-            backgroundColor='black'
-            marginTop={4}
-            padding={2}
-          >
-            <Center>
-              <Text color='white'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatem accusamus facilis alias quisquam voluptatibus hic
-                impedit dolorum dolorem ab! Placeat quis provident odio est
-                cumque nostrum delectus non itaque dolor. Ini Footer
-              </Text>
-            </Center>
           </Container>
         </Box>
       </Layout>
@@ -93,21 +74,8 @@ export default function Home({ featuredPlaces }: HomeProps) {
   )
 }
 
-const placesDir = path.join(process.cwd(), 'places')
-
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const md = new Remarkable()
-  const fileNames = fs.readdirSync(placesDir)
-  const postDatas: PostData[] = fileNames.map(fileName => {
-    const filePath = path.join(placesDir, fileName)
-    const fileContent = fs.readFileSync(filePath)
-    const matterData = matter(fileContent)
-    const parsed = md.render(matterData.content)
-    return {
-      content: parsed,
-      metadata: matterData.data,
-    }
-  })
+  const postDatas = getPostsDatas()
   return {
     props: {
       featuredPlaces: postDatas,

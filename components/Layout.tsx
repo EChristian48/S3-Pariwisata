@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Center, Container, Text } from '@chakra-ui/react'
 import { FC } from 'react'
 import Particles from 'react-particles-js'
 import Nav from '~root/components/Nav'
@@ -12,6 +12,22 @@ const Layout: FC = ({ children }) => {
       <Nav />
 
       <Box paddingTop={isMediumScreen ? '85px' : '75px'}>{children}</Box>
+
+      <Container
+        maxWidth='100%'
+        backgroundColor='black'
+        marginTop={4}
+        padding={2}
+      >
+        <Center>
+          <Text color='white'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+            accusamus facilis alias quisquam voluptatibus hic impedit dolorum
+            dolorem ab! Placeat quis provident odio est cumque nostrum delectus
+            non itaque dolor. Ini Footer
+          </Text>
+        </Center>
+      </Container>
 
       <Box
         backgroundColor='gray.900'

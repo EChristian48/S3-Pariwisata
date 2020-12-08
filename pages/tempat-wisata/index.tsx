@@ -1,10 +1,11 @@
-import { Container, Text } from '@chakra-ui/react'
+import { Center, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import path from 'path'
 import { Remarkable } from 'remarkable'
+import FeaturedPlace from '~root/components/FeaturedPlace'
 import Layout from '~root/components/Layout'
 import { PostData } from '~root/lib/types'
 
@@ -12,14 +13,27 @@ type TempatWisataProps = {
   places: PostData[]
 }
 
-export default function TempatWisata() {
+export default function TempatWisata({ places }: TempatWisataProps) {
   return (
     <>
       <NextSeo title='Tempat Wisata' />
 
       <Layout>
-        <Container></Container>
-        <Text color='white'>Ini Tempat Wisata</Text>
+        <Container maxWidth='100%'>
+          <Heading color='white' textAlign='center'>
+            Tempat Wisata Unggulan di Bogor
+          </Heading>
+        </Container>
+
+        <Container maxWidth='100%' marginTop={16}>
+          <SimpleGrid columns={[2, , 4]} color='white' spacing='4'>
+            {places.map(({ metadata: { name, photoUrl } }) => (
+              <Center height='100%' width='100%' key={name}>
+                <FeaturedPlace {...{ name, photoUrl }} />
+              </Center>
+            ))}
+          </SimpleGrid>
+        </Container>
       </Layout>
     </>
   )
