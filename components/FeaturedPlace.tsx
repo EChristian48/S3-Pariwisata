@@ -36,7 +36,9 @@ export default function FeaturedPlace({ name, photoUrl }: FeaturedPlaceProps) {
       >
         <motion.img src={photoUrl} animate={imageControl} />
         <Center height='full' width='full' position='absolute' top={0}>
-          <Heading color='white'>{name}</Heading>
+          <Heading color='white' textAlign='center'>
+            {name}
+          </Heading>
         </Center>
       </motion.div>
     </Box>

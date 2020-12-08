@@ -1,11 +1,9 @@
 import { Box, Center, Container, Heading, Stack, Text } from '@chakra-ui/react'
-import { useAnimation } from 'framer-motion'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import path from 'path'
-import { useEffect, useState } from 'react'
 import { Remarkable } from 'remarkable'
 import FeaturedPlace from '~root/components/FeaturedPlace'
 import Layout from '~root/components/Layout'
@@ -17,20 +15,7 @@ type HomeProps = {
 }
 
 export default function Home({ featuredPlaces }: HomeProps) {
-  const [selectedImage, setSelectedImage] = useState(0)
   const isMediumScreen = useMediumScreen()
-  const imageControl = useAnimation()
-  const textControl = useAnimation()
-
-  useEffect(() => {
-    imageControl.start({
-      objectFit: 'cover',
-      filter: 'brightness(50%)',
-      height: '300px',
-      width: '300px',
-      zIndex: -1,
-    })
-  }, [])
 
   return (
     <>
@@ -79,7 +64,7 @@ export default function Home({ featuredPlaces }: HomeProps) {
               width='full'
               align='center'
             >
-              {featuredPlaces.map(
+              {featuredPlaces.slice(0, 3).map(
                 ({ metadata: { name, photoUrl, shortDesc } }) => (
                   <FeaturedPlace {...{ photoUrl, name }} key={name} />
                 )
