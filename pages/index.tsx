@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import FeaturedPlace from '~root/components/FeaturedPlace'
 import Layout from '~root/components/Layout'
+import LinkWrapper from '~root/components/LinkWrapper'
 import { useMediumScreen } from '~root/lib/hooks'
 import { getPostsDatas } from '~root/lib/tempat-wisata'
 import { PostData } from '~root/lib/types'
@@ -64,7 +65,12 @@ export default function Home({ featuredPlaces }: HomeProps) {
               {featuredPlaces
                 .slice(0, 3)
                 .map(({ metadata: { name, photoUrl }, id }) => (
-                  <FeaturedPlace {...{ photoUrl, name }} key={id} />
+                  <LinkWrapper
+                    nextProps={{ href: `/tempat-wisata/${id}` }}
+                    key={id}
+                  >
+                    <FeaturedPlace {...{ photoUrl, name }} />
+                  </LinkWrapper>
                 ))}
             </Stack>
           </Container>
