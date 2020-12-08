@@ -20,7 +20,7 @@ export default function Home({ featuredPlaces }: HomeProps) {
       <NextSeo title='Home' />
 
       <Layout>
-        <Box padding={2} paddingTop={0}>
+        <Box padding={2}>
           <Box
             background='
               linear-gradient(
@@ -30,7 +30,7 @@ export default function Home({ featuredPlaces }: HomeProps) {
               url(tong-sampah.jpg)'
             backgroundSize='cover'
             backgroundPosition={['center', , '50% 0%']}
-            minHeight='100vh'
+            minHeight='500px'
           >
             <Container
               maxWidth={['100%', , '60%']}
