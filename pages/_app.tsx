@@ -14,11 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='preconnect' href='https://fonts.gstatic.com' />
 
         <link
-          href='https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap'
-          rel='stylesheet'
-        />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap'
           rel='stylesheet'
         />
         <link

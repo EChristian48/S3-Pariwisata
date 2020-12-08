@@ -1,16 +1,5 @@
-import {
-  Box,
-  Center,
-  Container,
-  Heading,
-  HStack,
-  Image,
-  SimpleGrid,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react'
-import { motion, useAnimation } from 'framer-motion'
+import { Box, Center, Container, Heading, Stack, Text } from '@chakra-ui/react'
+import { useAnimation } from 'framer-motion'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { GetStaticProps } from 'next'
@@ -19,8 +8,7 @@ import path from 'path'
 import { useEffect, useState } from 'react'
 import { Remarkable } from 'remarkable'
 import FeaturedPlace from '~root/components/FeaturedPlace'
-import Nav from '~root/components/Nav'
-import { WRAPPER_ID } from '~root/lib/constants'
+import Layout from '~root/components/Layout'
 import { useMediumScreen } from '~root/lib/hooks'
 import { PostData } from '~root/lib/types'
 
@@ -48,45 +36,38 @@ export default function Home({ featuredPlaces }: HomeProps) {
     <>
       <NextSeo title='Home' />
 
-      <Nav />
-
-      <Box backgroundColor='gray.900' padding={2}>
-        <Box
-          background='
-        linear-gradient(
-          rgba(0, 0, 0, 0.5), 
-          rgba(0, 0, 0, 0.3)
-        ),
-        url(tong-sampah.jpg)'
-          backgroundSize='cover'
-          backgroundPosition={['center', , '50% 0%']}
-          minHeight='100vh'
-        >
-          <Container maxWidth='100%'>
-            <Heading
-              color='white'
-              fontFamily='Caveat'
-              textAlign='center'
-              size='4xl'
-              paddingTop={56}
+      <Layout>
+        <Box padding={2} paddingTop={0}>
+          <Box
+            background='
+              linear-gradient(
+                rgba(0, 0, 0, 0.5), 
+                rgba(0, 0, 0, 0.3)
+              ),
+              url(tong-sampah.jpg)'
+            backgroundSize='cover'
+            backgroundPosition={['center', , '50% 0%']}
+            minHeight='100vh'
+          >
+            <Container
+              maxWidth={['100%', , '60%']}
+              marginLeft={isMediumScreen ? 8 : 'auto'}
+              height='full'
             >
-              Hayu urang ka Bogor!
-            </Heading>
-            <Heading
-              textAlign='center'
-              color='white'
-              fontFamily='Nanum Pen Script'
-              size='2xl'
-              marginTop={2}
-            >
-              Di Bogor, seueur hal anu matak pikabungaheun!
-            </Heading>
-          </Container>
-        </Box>
+              <Heading color='white' size='2xl' paddingTop={48}>
+                Hayu urang ka Bogor!
+              </Heading>
+              <Text color='white' fontSize='2xl' marginTop={2}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                labore optio libero quis doloremque culpa in similique vero
+                illum, dolorem, nemo aliquid deleniti omnis provident quo fuga,
+                error magni eos.
+              </Text>
+            </Container>
+          </Box>
 
-        <Box backgroundColor='gray.900' paddingBottom='3000px'>
-          <Container maxWidth={['100%', , '80%']} paddingTop={8}>
-            <Heading textAlign='center' fontFamily='Caveat' color='white'>
+          <Container maxWidth={['100%', , '80%']} paddingY={4} paddingTop={8}>
+            <Heading textAlign='center' color='white'>
               Tempat Pilihan buat kamu:
             </Heading>
 
@@ -105,8 +86,24 @@ export default function Home({ featuredPlaces }: HomeProps) {
               )}
             </Stack>
           </Container>
+
+          <Container
+            maxWidth='100%'
+            backgroundColor='black'
+            marginTop={4}
+            padding={2}
+          >
+            <Center>
+              <Text color='white'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptatem accusamus facilis alias quisquam voluptatibus hic
+                impedit dolorum dolorem ab! Placeat quis provident odio est
+                cumque nostrum delectus non itaque dolor. Ini Footer
+              </Text>
+            </Center>
+          </Container>
         </Box>
-      </Box>
+      </Layout>
     </>
   )
 }
