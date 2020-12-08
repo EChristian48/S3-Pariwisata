@@ -63,8 +63,8 @@ export default function Home({ featuredPlaces }: HomeProps) {
             >
               {featuredPlaces
                 .slice(0, 3)
-                .map(({ metadata: { name, photoUrl, shortDesc } }) => (
-                  <FeaturedPlace {...{ photoUrl, name }} key={name} />
+                .map(({ metadata: { name, photoUrl }, id }) => (
+                  <FeaturedPlace {...{ photoUrl, name }} key={id} />
                 ))}
             </Stack>
           </Container>

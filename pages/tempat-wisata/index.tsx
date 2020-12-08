@@ -27,7 +27,7 @@ export default function TempatWisata({ places }: TempatWisataProps) {
         <Container maxWidth='100%' marginTop={16}>
           <SimpleGrid columns={[2, , 4]} color='white' spacing='4'>
             {places.map(({ metadata: { name, photoUrl }, id }) => (
-              <Center height='100%' width='100%' key={name}>
+              <Center height='100%' width='100%' key={id}>
                 <LinkWrapper nextProps={{ href: `/tempat-wisata/${id}` }}>
                   <FeaturedPlace {...{ name, photoUrl }} />
                 </LinkWrapper>
